@@ -3,95 +3,7 @@ addToCartButton = document.getElementsByClassName("addButton");
             let afterSchool = new Vue ({
                 el: "#app",
                 data:{
-                        lessons: [
-                            {
-                            id: 1001,
-                            subject: "Math",
-                            location: "London",
-                            price: 500,
-                            spaces: 5,
-                            icon: "fa-solid fa-calculator",
-                            },
-
-                            {
-                             id: 1002,    
-                            subject: "English",
-                            location: "London",
-                            price: 6,
-                            spaces: 5,
-                            icon: "fa-solid fa-book-open",
-                            },
-
-                            {
-                                 id: 1003,
-                            subject: "Biology",
-                            location: "London",
-                            price: 20,
-                            spaces: 5,
-                            icon: "fa-solid fa-dna",
-                            },
-
-                            {
-                                 id: 1004,
-                            subject: "hemistry",
-                            location: "London",
-                            price: 60,
-                            spaces: 5,
-                            icon: "fa-solid fa-flask",
-                            },
-                            {
-                                 id: 1005,
-                            subject: "Spanish",
-                            location: "London",
-                            price: 60,
-                            spaces: 5,
-                            icon: "fa-solid fa-book-open",
-                            },
-                            {
-                                 id: 1006,
-                            subject: "French",
-                            location: "London",
-                            price: 550,
-                            spaces: 5,
-                            icon: "fa-solid fa-language",
-                            },
-
-                            {
-                                 id: 1007,
-                            subject: "English",
-                            location: "USA",
-                            price: 60,
-                            spaces: 5,
-                            icon: "fa-solid fa-book-open",
-                            },
-
-                            {
-                             id: 1008,
-                            subject: "Biology",
-                            location: "Germany",
-                            price: 20,
-                            spaces: 5,
-                            icon: "fa-solid fa-dna",
-                            },
-
-                            {
-                             id: 1009,
-                            subject: "Music",
-                            location: "Italy",
-                            price: 60,
-                            spaces: 5,
-                            icon: "fa-solid fa-music",
-                            },
-                            {
-                             id: 1010,
-                            subject: "Math",
-                            location: "Canada",
-                            price: 60,
-                            spaces: 5,
-                            icon: "fa-solid fa-calculator",
-                            },
-
-                            ],
+                        lessons: [],
                             cart: [],
                             checkout: [],
                             key: '',
@@ -106,6 +18,18 @@ addToCartButton = document.getElementsByClassName("addButton");
 
                             
                     },
+
+                     created: function () {
+                        fetch(" http://localhost:3000/lesson"). then(
+                        function(response) {
+                            response.json().then (
+                                function(json){
+                                    afterSchool.lessons = json; 
+                                }
+                            )
+                        }
+                    )
+                },
 
                 methods: {
                     addToCart: function(lesson) {
