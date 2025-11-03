@@ -14,13 +14,14 @@ addToCartButton = document.getElementsByClassName("addButton");
                                 nameInput: '',
                                 phoneNumber: '',
                                 email: '',
-                                spaces:'',                        }
+                                spaces:'', 
+                             }
 
                             
                     },
 
                      created: function () {
-                        fetch(" http://localhost:3000/lesson"). then(
+                        fetch("http://localhost:3000/Afterschool/lesson"). then(
                         function(response) {
                             response.json().then (
                                 function(json){
@@ -62,19 +63,40 @@ addToCartButton = document.getElementsByClassName("addButton");
         
                 },
 
-                    goBack: function() {
+                goBack: function() {
                         this.showCheckout = true;
                     },
 
-                displayBill: function(){
-                    this.showbill = this.showbill ? false : true;
-                },
+                saveOrderInfo: function() {
+                    fetch("http://localhost:3000/Afterschool/orderInfo ", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name: this.orderInformation.nameInput,
+                            phoneNumber: this.orderInformation.phoneNumber,
+                            email: this.orderInformation.email
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Order saved:", data);
+                        this.showbill = true;
+                    })
+                    .catch(error => {
+                        console.error("Error saving order:", error);
+                    });
+},
 
                 closeBill: function(){
                     this.showbill = false;
-                }
+                },
+
+            
                    
                 },
+
 
                 computed: {
                     cartCount: function() {
