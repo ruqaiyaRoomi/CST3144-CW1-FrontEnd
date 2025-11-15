@@ -38,9 +38,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                         if(lesson.spaces > 0){
                         this.cart.push(lesson);
                         lesson.spaces--;
-                        
-                        } 
-
+                        }
                         
                     },
 
@@ -74,6 +72,18 @@ addToCartButton = document.getElementsByClassName("addButton");
                 saveOrderInfo: function() {
 
                         const lessonIds = this.cart.map(lesson => lesson._id)
+                        const spaces = [];
+                        lessonIds.forEach((id,i)  => {
+
+                            if(lessonIds.indexOf(id) === i) {
+                                 let count = 0;
+                            lessonIds.forEach(countId =>{
+                                if(countId === id) count++;
+                            });
+                            spaces.push(count)
+                        
+                            }
+                        });
 
                     fetch("http://localhost:3000/Afterschool/orderInfo ", {
                         method: 'POST',
@@ -84,7 +94,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                             name: this.orderInformation.nameInput,
                             phoneNumber: this.orderInformation.phoneNumber,
                             email: this.orderInformation.email,
-                            spaces: this.spaces,
+                            spaces: spaces,
                             lessonId: lessonIds,
                             
                         })
