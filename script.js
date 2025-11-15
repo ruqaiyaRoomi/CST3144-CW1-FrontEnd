@@ -14,7 +14,8 @@ addToCartButton = document.getElementsByClassName("addButton");
                                 nameInput: '',
                                 phoneNumber: '',
                                 email: '',
-                                spaces:'', 
+                                spaces:[],
+                                lessonId: [] 
                              }
 
                             
@@ -37,7 +38,10 @@ addToCartButton = document.getElementsByClassName("addButton");
                         if(lesson.spaces > 0){
                         this.cart.push(lesson);
                         lesson.spaces--;
-                        }
+                        
+                        } 
+
+                        
                     },
 
                     removeFromCart: function(lesson){
@@ -68,6 +72,9 @@ addToCartButton = document.getElementsByClassName("addButton");
                     },
 
                 saveOrderInfo: function() {
+
+                        const lessonIds = this.cart.map(lesson => lesson._id)
+
                     fetch("http://localhost:3000/Afterschool/orderInfo ", {
                         method: 'POST',
                         headers: {
@@ -76,7 +83,10 @@ addToCartButton = document.getElementsByClassName("addButton");
                         body: JSON.stringify({
                             name: this.orderInformation.nameInput,
                             phoneNumber: this.orderInformation.phoneNumber,
-                            email: this.orderInformation.email
+                            email: this.orderInformation.email,
+                            spaces: this.spaces,
+                            lessonId: lessonIds,
+                            
                         })
                     })
                     .then(response => response.json())
@@ -91,6 +101,8 @@ addToCartButton = document.getElementsByClassName("addButton");
 
                 closeBill: function(){
                     this.showbill = false;
+                // edit this make the form reset after closing and reset the cart and make sure the spaces gets updated
+              
                 },
 
             
