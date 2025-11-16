@@ -16,7 +16,8 @@ addToCartButton = document.getElementsByClassName("addButton");
                                 email: '',
                                 spaces:[],
                                 lessonId: [] 
-                             }
+                             },
+                        searchInput: "",
 
                             
                     },
@@ -105,7 +106,8 @@ addToCartButton = document.getElementsByClassName("addButton");
                     .then(response => response.json())
                     .then(data => {
                         console.log("Order saved:", data);
-                            this.showbill = true;
+                        this.showbill = true;
+                        
                         for(let i = 0; i< this.cart.length; i++) {
                             const lesson = this.cart[i];
                             const booked = spaces[this.cart.map(l => l._id).indexOf(lesson._id)];
@@ -126,27 +128,35 @@ addToCartButton = document.getElementsByClassName("addButton");
                                 })
                             }).then(response =>response.json())
                                 .then(update => {
-                                    this.showCart = false;
                                     console.log(`Lesson ${lesson} updated to: `, updatedSpaces)
                                 })
                         }
-        
                     })
                     .catch(error => {
                         console.error("Error:", error);
                     });
+
+                   
                 },
 
 
-
-                updateSpaces: function() {
-                    console.log(spaces)
+                search: function () {
+                        const keyword = this.searchInput
+                        fetch(`http://localhost:3000/Afterschool/lesson/search?q=${keyword}`). then(
+                        function(response) {
+                            response.json().then (
+                                function(json){
+                                    afterSchool.lessons = json
+                                }
+                            )
+                        }
+                    )
                 },
-
+    
+                
                 closeBill: function(){
                     this.showbill = false;
-                    
-                // edit this make the form reset after closing and reset the cart and make sure the spaces gets updated
+                    window.location.reload();
               
                 },
 
@@ -222,8 +232,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                     return  this.orderInformation.email.length > 0  && !this.validateEmail;
 
 
-                },}
-    
+                },},
 
     
             })
