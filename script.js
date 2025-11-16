@@ -26,7 +26,10 @@ addToCartButton = document.getElementsByClassName("addButton");
                         function(response) {
                             response.json().then (
                                 function(json){
-                                    afterSchool.lessons = json; 
+                                    afterSchool.lessons = json.map(lesson => ({
+                                        ...lesson,
+                                        initalSpaces: lesson.spaces
+                                    })); 
                                 }
                             )
                         }
@@ -102,15 +105,47 @@ addToCartButton = document.getElementsByClassName("addButton");
                     .then(response => response.json())
                     .then(data => {
                         console.log("Order saved:", data);
-                        this.showbill = true;
+                            this.showbill = true;
+                        for(let i = 0; i< this.cart.length; i++) {
+                            const lesson = this.cart[i];
+                            const booked = spaces[this.cart.map(l => l._id).indexOf(lesson._id)];
+                        
+
+                            const updatedSpaces = lesson.initalSpaces - booked ;
+                            console.log("Updated space:")
+                            console.log(updatedSpaces)
+
+                            fetch(`http://localhost:3000/Afterschool/lesson/${lesson._id}`, {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    spaces: updatedSpaces
+                                    
+                                })
+                            }).then(response =>response.json())
+                                .then(update => {
+                                    this.showCart = false;
+                                    console.log(`Lesson ${lesson} updated to: `, updatedSpaces)
+                                })
+                        }
+        
                     })
                     .catch(error => {
-                        console.error("Error saving order:", error);
+                        console.error("Error:", error);
                     });
-},
+                },
+
+
+
+                updateSpaces: function() {
+                    console.log(spaces)
+                },
 
                 closeBill: function(){
                     this.showbill = false;
+                    
                 // edit this make the form reset after closing and reset the cart and make sure the spaces gets updated
               
                 },
