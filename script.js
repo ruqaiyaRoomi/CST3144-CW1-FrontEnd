@@ -87,11 +87,11 @@ addToCartButton = document.getElementsByClassName("addButton");
                                 if(countId === id) count++;
                             });
                             spaces.push(count)
-                        
+                     
                             }
                         });
 
-                    fetch("https://cst3145-cw1-backend.onrender.com//Afterschool/orderInfo ", {
+                    fetch("https://cst3145-cw1-backend.onrender.com/Afterschool/orderInfo ", {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
