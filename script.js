@@ -14,6 +14,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                                 nameInput: '',
                                 phoneNumber: '',
                                 email: '',
+                                subject: [],
                                 spaces:[],
                                 lessonId: [] 
                              },
@@ -23,7 +24,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                     },
 
                      created: function () {
-                        fetch("http://localhost:3000/Afterschool/lesson"). then(
+                        fetch("https://cst3145-cw1-backend.onrender.com/Afterschool/lesson"). then(
                         function(response) {
                             response.json().then (
                                 function(json){
@@ -76,6 +77,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                 saveOrderInfo: function() {
 
                         const lessonIds = this.cart.map(lesson => lesson._id)
+                        const subject = this.cart.map(lesson => lesson.subject)
                         const spaces = [];
                         lessonIds.forEach((id,i)  => {
 
@@ -89,7 +91,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                             }
                         });
 
-                    fetch("http://localhost:3000/Afterschool/orderInfo ", {
+                    fetch("https://cst3145-cw1-backend.onrender.com//Afterschool/orderInfo ", {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -98,6 +100,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                             name: this.orderInformation.nameInput,
                             phoneNumber: this.orderInformation.phoneNumber,
                             email: this.orderInformation.email,
+                            subject: subject,
                             spaces: spaces,
                             lessonId: lessonIds,
                             
@@ -117,7 +120,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                             console.log("Updated space:")
                             console.log(updatedSpaces)
 
-                            fetch(`http://localhost:3000/Afterschool/lesson/${lesson._id}`, {
+                            fetch(`https://cst3145-cw1-backend.onrender.com//Afterschool/lesson/${lesson._id}`, {
                                 method: 'PUT',
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -142,7 +145,7 @@ addToCartButton = document.getElementsByClassName("addButton");
 
                 search: function () {
                         const keyword = this.searchInput
-                        fetch(`http://localhost:3000/Afterschool/lesson/search?q=${keyword}`). then(
+                        fetch(`https://cst3145-cw1-backend.onrender.com//Afterschool/lesson/search?q=${keyword}`). then(
                         function(response) {
                             response.json().then (
                                 function(json){
@@ -217,6 +220,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                    },
 
                     isFormFilled: function(){
+                        console.log(this.validateEmail && this.validateName && this.validatePhone)
                     return this.validateEmail && this.validateName && this.validatePhone
                         
                    },
