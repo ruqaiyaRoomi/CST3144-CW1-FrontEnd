@@ -120,7 +120,7 @@ addToCartButton = document.getElementsByClassName("addButton");
                             console.log("Updated space:")
                             console.log(updatedSpaces)
 
-                            fetch(`https://cst3145-cw1-backend.onrender.com//Afterschool/lesson/${lesson._id}`, {
+                            fetch(`https://cst3145-cw1-backend.onrender.com/Afterschool/lesson/${lesson._id}`, {
                                 method: 'PUT',
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -145,7 +145,7 @@ addToCartButton = document.getElementsByClassName("addButton");
 
                 search: function () {
                         const keyword = this.searchInput
-                        fetch(`https://cst3145-cw1-backend.onrender.com//Afterschool/lesson/search?q=${keyword}`). then(
+                        fetch(`https://cst3145-cw1-backend.onrender.com/Afterschool/lesson/search?q=${keyword}`). then(
                         function(response) {
                             response.json().then (
                                 function(json){

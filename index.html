@@ -13,7 +13,7 @@
     <div id="app">
         <header>
             <p>After School</p>
-            <label for="search"><span></span><input type="text" id="search" placeholder="search"  v-on:input="search" v-model="searchInput"></label> <p>{{searchInput}}</p>
+            <label for="search"><span></span><input type="text" id="search" placeholder="search"  v-on:input="search" v-model="searchInput"></label>
             <button  :disabled="cart.length === 0" :class=" cart.length === 0 ? 'disabledCart' : 'cartButton' " v-on:click="showCart" >
                 <span id="cartButton"><i class="fa-solid fa-cart-shopping"></i></span> {{cartCount}} 
             </button>
