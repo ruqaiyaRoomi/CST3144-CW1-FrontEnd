@@ -11,9 +11,6 @@ let afterSchool = new Vue({
       nameInput: "",
       phoneNumber: "",
       email: "",
-      subject: [],
-      spaces: [],
-      lessonId: [],
     },
     searchInput: "",
   },
@@ -25,7 +22,7 @@ let afterSchool = new Vue({
         response.json().then(function (json) {
           afterSchool.lessons = json.map((lesson) => ({
             ...lesson,
-            initalSpaces: lesson.spaces,
+            intialSpaces: lesson.spaces,
           }));
         });
       }
@@ -82,7 +79,7 @@ let afterSchool = new Vue({
         }
       });
       // POST order to backend
-      fetch("https://cst3145-cw1-backend.onrender.com/Afterschool/orderInfo ", {
+      fetch("https://cst3145-cw1-backend.onrender.com/Afterschool/orderInfo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -108,9 +105,7 @@ let afterSchool = new Vue({
               spaces[this.cart.map((l) => l._id).indexOf(lesson._id)];
 
             // calculates the updated spaces
-            const updatedSpaces = lesson.initalSpaces - booked;
-            console.log("Updated space:");
-            console.log(updatedSpaces);
+            const updatedSpaces = lesson.intialSpaces - booked;
             // Update backend for each lesson
             fetch(
               `https://cst3145-cw1-backend.onrender.com/Afterschool/lesson/${lesson._id}`,
@@ -187,7 +182,6 @@ let afterSchool = new Vue({
     },
 
     // Validation for checkout fields
-
     validatePhone: function () {
       let regex = /^\d{10}$/;
       let phoneNumber = this.orderInformation.phoneNumber.trim();
@@ -209,9 +203,6 @@ let afterSchool = new Vue({
 
     // checks if all validations are successful
     isFormFilled: function () {
-      console.log(
-        this.validateEmail && this.validateName && this.validatePhone
-      );
       return this.validateEmail && this.validateName && this.validatePhone;
     },
 

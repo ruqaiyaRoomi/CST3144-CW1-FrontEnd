@@ -1,8 +1,7 @@
 body {
   font-family: "Inter", sans-serif;
   background-color: #f5f8fc;
-  justify-content: center;
-  align-items: center;
+  display: flex;
   min-height: 100vh;
   margin: 0px;
 }
@@ -39,7 +38,7 @@ header p {
 
 .cartButton {
   color: white;
-  padding-right: 10ox;
+  padding-right: 10px;
   width: 50px;
   height: 50px;
   background-color: transparent;
@@ -50,7 +49,7 @@ header p {
 
 .disabledCart {
   color: #ccc;
-  padding-right: 10ox;
+  padding-right: 10px;
   width: 50px;
   height: 50px;
   background-color: transparent;
@@ -186,23 +185,20 @@ header button {
 #sidebar input {
   margin: 10px 0;
   cursor: pointer;
-  text-align: center;
 }
 
 #sidebar label {
   transition: 0.2s ease;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: block;
 }
 
 #sidebar label:hover {
   color: #bdc8d7;
 }
 
-#sidebar label {
-  font-size: 16px;
-  margin-right: 10px;
-  cursor: pointer;
-  display: block;
-}
 
 #cartContainer {
   display: flex;

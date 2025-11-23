@@ -13,7 +13,7 @@
     <div id="app">
         <header>
             <p>After School</p>
-            <label for="search"><span></span><input type="text" id="search" placeholder="search"  v-on:input="search" v-model="searchInput"></label>
+            <label for="search"><input type="text" id="search" placeholder="search"  v-on:input="search" v-model="searchInput"></label>
             <button  :disabled="cart.length === 0" :class=" cart.length === 0 ? 'disabledCart' : 'cartButton' " v-on:click="showCart" >
                 <span id="cartButton"><i class="fa-solid fa-cart-shopping"></i></span> {{cartCount}} 
             </button>
@@ -85,19 +85,7 @@
                 </div>
             </div>
         </div>
-
-        <!--   <div id="bill">
-                <div id="billHeader">
-                    <p>Total</p>
-                </div>
-                <div id="billBody">
-                    <p>Quantity: {{cart.length}}</p>
-                </div>
-
-                <div id="total">Total Price: </div>
-            </div>
-        </div> -->
-
+        
           <div id="checkout">
                          <div class="user_input">
                             <input type="text" required id="nameInput" v-model="orderInformation.nameInput">
@@ -117,7 +105,7 @@
                         </div>
 
                         <div class="user_input">
-                            <input type="tel" required id="phoneNumber"  v-model.number()="orderInformation.phoneNumber">
+                            <input type="tel" required id="phoneNumber"  v-model.number="orderInformation.phoneNumber">
                             <label>Phone Number</label>
                             <i class="fa-solid fa-phone"></i>
                             <span class="messages" v-if="showPhoneError">Please enter a valid Phone Number</span>
@@ -133,10 +121,7 @@
         </div>
 </main>
     </div>
-        <script  type="text/javascript" src="./script.js">
-        
-        </script>
-
+        <script  type="text/javascript" src="./script.js"></script>
     </body>
 </html>
 
