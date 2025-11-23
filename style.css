@@ -1,5 +1,5 @@
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #f5f8fc;
   justify-content: center;
   align-items: center;
@@ -7,83 +7,82 @@ body {
   margin: 0px;
 }
 
+header {
+  background-color: #132157;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 44%,
+    rgba(0, 98, 255, 1) 100%
+  );
+  padding: 20px;
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+}
 
- header{
-    background-color: #132157;
-    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 44%, rgba(0, 98, 255, 1) 100%);
-    padding: 20px;
-    margin: 0px;
-    display: flex;
-    justify-content: space-between;
-  
- }
-
- header p{
+header p {
   color: white;
- }
+}
 
-  #search {
-        width: 390px;
-        height: 35px;
-        border-radius: 10px;
-        border: none;
-        padding-left: 10px;
-    }
+#search {
+  width: 390px;
+  height: 35px;
+  border-radius: 10px;
+  border: none;
+  padding-left: 10px;
+}
 
-  #search:focus {
-    outline: none;
-  }
+#search:focus {
+  outline: none;
+}
 
+.cartButton {
+  color: white;
+  padding-right: 10ox;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
 
- .cartButton {
-    color: white;
-    padding-right: 10ox;
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
+.disabledCart {
+  color: #ccc;
+  padding-right: 10ox;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
 
- }
-
- .disabledCart{
-    color: #ccc;
-    padding-right: 10ox;
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-
- }
- 
 header button {
-    color: white ;
-  
+  color: white;
 }
 
 #lessonDisplay {
-    display: flex;
-    gap: 60px;
-    margin-top: 20px;
-    margin-left: 20px;
+  display: flex;
+  gap: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 #lessonContainer {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: 50px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 50px;
 }
 
 .lessonCard {
   width: 340px;
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -92,18 +91,17 @@ header button {
 
 .lessonCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 5px 25px rgba(0,0,0,0.10);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
 }
 
-.lessonIcon{
-    position: relative;
-    left: 90px;
-    top: 55px;
-    font-size: 50px;
-    margin: 0px;
-    padding: 0px;
+.lessonIcon {
+  position: relative;
+  left: 90px;
+  top: 55px;
+  font-size: 50px;
+  margin: 0px;
+  padding: 0px;
 }
-
 
 .lessonBody {
   padding: 16px 30px;
@@ -115,7 +113,6 @@ header button {
   margin-bottom: 16px;
   padding: 0px;
   text-align: center;
-  
 }
 
 .lessonInfo p {
@@ -124,8 +121,6 @@ header button {
   align-items: center;
   gap: 6px;
 }
-
-
 
 .lessonFooter {
   display: flex;
@@ -141,7 +136,8 @@ header button {
   color: #1e3a8a;
 }
 
-.addButton, .removeButton{
+.addButton,
+.removeButton {
   background-color: #1e3a8a;
   color: white;
   border: none;
@@ -157,8 +153,8 @@ header button {
 }
 
 .disabledButton {
-    background-color: #ccc;
-    color: white;
+  background-color: #ccc;
+  color: white;
   border: none;
   border-radius: 12px;
   padding: 10px 16px;
@@ -168,233 +164,224 @@ header button {
   align-items: center;
   gap: 8px;
   transition: background 0.2s ease;
-
 }
 
-.addButton:hover , .removeButton:hover {
+.addButton:hover,
+.removeButton:hover {
   background-color: #132157;
 }
 
-
-
-#sidebar{
-    margin-top: 20px;
-    width: 250px;
-    padding: 20px;
-    border-right: 2px solid rgb(0, 0, 0, 0.06) ;
+#sidebar {
+  margin-top: 20px;
+  width: 250px;
+  padding: 20px;
+  border-right: 2px solid rgb(0, 0, 0, 0.06);
 }
 
 #sidebar p {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #sidebar input {
-    margin: 10px 0;
-    cursor: pointer;
-    text-align: center;
+  margin: 10px 0;
+  cursor: pointer;
+  text-align: center;
 }
 
 #sidebar label {
-    transition: 0.2s ease ;
+  transition: 0.2s ease;
 }
 
 #sidebar label:hover {
-    color: #bdc8d7;
+  color: #bdc8d7;
 }
 
 #sidebar label {
-    font-size: 16px;
-    margin-right: 10px;
-    cursor: pointer;
-    display: block;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: block;
 }
-
-
 
 #cartContainer {
-    display: flex;
-    flex-direction: column; /* stack items vertically */
-    align-items: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  gap: 20px;
 }
 
-
-#cartBody{
-   display: flex;
+#cartBody {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
 
-
 #checkout {
-    background-color: #fff;
-    width: 420px;
-    padding: 50px 35px;
-    margin: 0 auto;              
-    border-radius: 14px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-    text-align: center;
-    box-sizing: border-box;
+  background-color: #fff;
+  width: 420px;
+  padding: 50px 35px;
+  margin: 0 auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  box-sizing: border-box;
 }
 
 #cartTitle {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-#goback{
-  color:#132157;
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 25px;
-    margin-left: 10px;
+#goback {
+  color: #132157;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  margin-left: 10px;
 }
 
 .user_input {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin-top: 25px;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-top: 25px;
 }
 
 .user_input input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    color: #132157;
-    font-weight: 600;
-    border-bottom: 2px solid #c9c7c7;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #132157;
+  font-weight: 600;
+  border-bottom: 2px solid #c9c7c7;
 }
 
 .user_input label {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #000;
-    transition: .5s;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #000;
+  transition: 0.5s;
 }
 
 .user_input input:focus ~ label,
 .user_input input:valid ~ label {
-    top: -3px;
-    color: #151515;
+  top: -3px;
+  color: #151515;
 }
 
 .user_input i {
-    position: absolute;
-    top: 40%;
-    right: 0.5px;
-    font-size: 18px;
-    transform: translateX(-50%);
-    transition: .5s;
+  position: absolute;
+  top: 40%;
+  right: 0.5px;
+  font-size: 18px;
+  transform: translateX(-50%);
+  transition: 0.5s;
 }
 
 .user_input input:focus ~ i,
 .user_input input:valid ~ i {
-    top: -4px;
+  top: -4px;
 }
 
 .checkoutButton {
-        background-color: #1e3a8a;
-        color: white;
-        border: none;
-        border-radius: 12px;
-        padding: 10px 16px;
-        margin-top: 25px ;
-        margin-left: 20px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        cursor: pointer;
-        gap: 8px;
-        transition: background 0.2s ease;
-    }
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin-top: 25px;
+  margin-left: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
 
 .checkoutButton:hover {
-       background-color: #132157;
-    }
-
-.checkoutButtonDisabled{
-        background-color: #9ea1a8;
-        color: white;
-        border: none;
-        border-radius: 12px;
-        padding: 10px 16px;
-         margin-top: 25px ;
-        margin-left: 20px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        cursor: pointer;
-        gap: 8px;
-        transition: background 0.2s ease;
-    
+  background-color: #132157;
 }
 
- #billContainer {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    display: flex;
-	z-index: 999;
+.checkoutButtonDisabled {
+  background-color: #9ea1a8;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin-top: 25px;
+  margin-left: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  gap: 8px;
+  transition: background 0.2s ease;
 }
 
+#billContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 999;
+}
 
 #bill {
-        background-color:  #1e3a8a;
-        display: block;
-        position: relative;
-        height: 300px;
-        width: 590px;
-        font-size: 30px;
-        box-shadow: 0 6px 26px rgba(0,0,0,0.5);
-    }
-
-#billTitle{
-         margin: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        color: white;
-    }
-
-#bill button{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-
+  background-color: #1e3a8a;
+  display: block;
+  position: relative;
+  height: 300px;
+  width: 590px;
+  font-size: 30px;
+  box-shadow: 0 6px 26px rgba(0, 0, 0, 0.5);
 }
 
- #bill i {
-        color: rgb(225, 223, 223);
-        font-size: 20px;
-        padding-left: 10px;
-        padding-top: 10px;
-    }
+#billTitle {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+#bill button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#bill i {
+  color: rgb(225, 223, 223);
+  font-size: 20px;
+  padding-left: 10px;
+  padding-top: 10px;
+}
 
 .messages {
-    color: red;
-    font-size: 12px;
-    position: absolute;
-    top: 60px;
-    left: 0;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  top: 60px;
+  left: 0;
 }
