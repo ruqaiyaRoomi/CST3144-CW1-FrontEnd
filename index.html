@@ -85,7 +85,6 @@
                 </div>
             </div>
         </div>
-        
           <div id="checkout">
                          <div class="user_input">
                             <input type="text" required id="nameInput" v-model="orderInformation.nameInput">
@@ -105,7 +104,7 @@
                         </div>
 
                         <div class="user_input">
-                            <input type="tel" required id="phoneNumber"  v-model.number="orderInformation.phoneNumber">
+                            <input type="tel" required id="phoneNumber"  v-model.number()="orderInformation.phoneNumber">
                             <label>Phone Number</label>
                             <i class="fa-solid fa-phone"></i>
                             <span class="messages" v-if="showPhoneError">Please enter a valid Phone Number</span>

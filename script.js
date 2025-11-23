@@ -66,18 +66,8 @@ let afterSchool = new Vue({
     saveOrderInfo: function () {
       const lessonIds = this.cart.map((lesson) => lesson._id);
       const subject = this.cart.map((lesson) => lesson.subject);
-      const spaces = [];
-
-      // Count number of times each lesson appears in cart
-      lessonIds.forEach((id, i) => {
-        if (lessonIds.indexOf(id) === i) {
-          let count = 0;
-          lessonIds.forEach((countId) => {
-            if (countId === id) count++;
-          });
-          spaces.push(count);
-        }
-      });
+      const spaces = lessonIds.map(() => 1);
+      
       // POST order to backend
       fetch("https://cst3145-cw1-backend.onrender.com/Afterschool/orderInfo", {
         method: "POST",
