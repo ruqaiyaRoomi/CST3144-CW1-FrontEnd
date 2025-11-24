@@ -17,7 +17,7 @@ let afterSchool = new Vue({
 
   created: function () {
     // Fetch all lessons from backend
-    fetch("http://localhost:3000/Afterschool/lesson").then(function (response) {
+    fetch("https://cst3145-cw1-backend.onrender.com/Afterschool/lesson").then(function (response) {
       response.json().then(function (json) {
         afterSchool.lessons = json.map((lesson) => ({
           ...lesson,
@@ -80,7 +80,7 @@ let afterSchool = new Vue({
       const spaces = lessonIds.map((id) => aggregated[id].spaces);
 
       // POST order to backend
-      fetch("http://localhost:3000/Afterschool/orderInfo", {
+      fetch("https://cst3145-cw1-backend.onrender.com/Afterschool/orderInfo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -106,7 +106,7 @@ let afterSchool = new Vue({
             const updatedSpaces = initial - booked;
 
             // Update backend for each lesson
-            fetch(`http://localhost:3000/Afterschool/lesson/${id}`, {
+            fetch(`https://cst3145-cw1-backend.onrender.com/Afterschool/lesson/${id}`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
@@ -130,7 +130,7 @@ let afterSchool = new Vue({
     search: function () {
       const keyword = this.searchInput;
       fetch(
-        `http://localhost:3000/Afterschool/lesson/search?q=${keyword}`
+        `https://cst3145-cw1-backend.onrender.com/Afterschool/lesson/search?q=${keyword}`
       ).then(function (response) {
         response.json().then(function (json) {
           afterSchool.lessons = json;
