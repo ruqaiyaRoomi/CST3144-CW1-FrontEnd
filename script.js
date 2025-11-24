@@ -17,16 +17,14 @@ let afterSchool = new Vue({
 
   created: function () {
     // Fetch all lessons from backend
-    fetch("https://cst3145-cw1-backend.onrender.com/Afterschool/lesson").then(
-      function (response) {
-        response.json().then(function (json) {
-          afterSchool.lessons = json.map((lesson) => ({
-            ...lesson,
-            intialSpaces: lesson.spaces,
-          }));
-        });
-      }
-    );
+    fetch("http://localhost:3000/Afterschool/lesson").then(function (response) {
+      response.json().then(function (json) {
+        afterSchool.lessons = json.map((lesson) => ({
+          ...lesson,
+          initialSpaces: lesson.spaces,
+        }));
+      });
+    });
   },
 
   methods: {
@@ -64,12 +62,25 @@ let afterSchool = new Vue({
 
     // saves order info
     saveOrderInfo: function () {
-      const lessonIds = this.cart.map((lesson) => lesson._id);
-      const subject = this.cart.map((lesson) => lesson.subject);
-      const spaces = lessonIds.map(() => 1);
-      
+      const aggregated = {};
+      this.cart.forEach((lesson) => {
+        if (!aggregated[lesson._id]) {
+          aggregated[lesson._id] = {
+            subject: lesson.subject,
+            spaces: 1,
+            initialSpaces: lesson.initialSpaces,
+          };
+        } else {
+          aggregated[lesson._id].spaces += 1;
+        }
+      });
+
+      const lessonIds = Object.keys(aggregated);
+      const subject = lessonIds.map((id) => aggregated[id].subject);
+      const spaces = lessonIds.map((id) => aggregated[id].spaces);
+
       // POST order to backend
-      fetch("https://cst3145-cw1-backend.onrender.com/Afterschool/orderInfo", {
+      fetch("http://localhost:3000/Afterschool/orderInfo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -89,31 +100,26 @@ let afterSchool = new Vue({
           this.showbill = true;
 
           // Update lesson spaces in backend after successful order
-          for (let i = 0; i < this.cart.length; i++) {
-            const lesson = this.cart[i];
-            const booked =
-              spaces[this.cart.map((l) => l._id).indexOf(lesson._id)];
+          lessonIds.forEach((id) => {
+            const booked = aggregated[id].spaces;
+            const initial = aggregated[id].initialSpaces;
+            const updatedSpaces = initial - booked;
 
-            // calculates the updated spaces
-            const updatedSpaces = lesson.intialSpaces - booked;
             // Update backend for each lesson
-            fetch(
-              `https://cst3145-cw1-backend.onrender.com/Afterschool/lesson/${lesson._id}`,
-              {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  spaces: updatedSpaces,
-                }),
-              }
-            )
+            fetch(`http://localhost:3000/Afterschool/lesson/${id}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                spaces: updatedSpaces,
+              }),
+            })
               .then((response) => response.json())
               .then((update) => {
-                console.log(`Lesson ${lesson} updated to: `, updatedSpaces);
+                console.log(`Lesson ${id} updated to: `, updatedSpaces);
               });
-          }
+          });
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -124,7 +130,7 @@ let afterSchool = new Vue({
     search: function () {
       const keyword = this.searchInput;
       fetch(
-        `https://cst3145-cw1-backend.onrender.com/Afterschool/lesson/search?q=${keyword}`
+        `http://localhost:3000/Afterschool/lesson/search?q=${keyword}`
       ).then(function (response) {
         response.json().then(function (json) {
           afterSchool.lessons = json;
