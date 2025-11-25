@@ -185,7 +185,7 @@ let afterSchool = new Vue({
     },
 
     validateName: function () {
-      let regex = /^[A-Za-z]+$/;
+      let regex = /^[A-Za-z\s]+$/;
       let name = this.orderInformation.nameInput.trim();
       return !!(regex.test(name) && name);
     },
