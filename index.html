@@ -109,7 +109,7 @@
                             <i class="fa-solid fa-phone"></i>
                             <span class="messages" v-if="showPhoneError">Please enter a valid Phone Number</span>
                         </div>
-                        <button :disabled="!isFormFilled || cart.length === 0"  :class="{ checkoutButton: isFormFilled || cart.length > 0 , checkoutButtonDisabled: !isFormFilled || cart.length === 0}" v-on:click="saveOrderInfo">Checkout</button> 
+                        <button :disabled="!isFormFilled || cart.length === 0"  :class="{ checkoutButton: isFormFilled && cart.length > 0 , checkoutButtonDisabled: !isFormFilled || cart.length === 0}" v-on:click="saveOrderInfo">Checkout</button> 
 
                     </div>
                      <div id="billContainer" v-if="showbill">
